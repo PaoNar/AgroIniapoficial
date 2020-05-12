@@ -24,11 +24,11 @@ $usuario = $_SESSION['usuario'];
     //     WHERE ci = '$usuario'";
 
 
-        $sql="SELECT nombres, apellidos, correo, ci, direccion, asociacion, agr_provincia.nombre as provincia, , agr_caton.nombre as canton, agr_parroquia.nombre as parroquia
+        $sql="SELECT nombres, apellidos, correo, ci, direccion, asociacion, agr_provincia.id_provincia as id_provincia, agr_provincia.nombre as provincia , agr_caton.id_canton as id_canton, agr_caton.nombre as canton, agr_parroquia.id_parroquia as id_parroquia ,agr_parroquia.nombre as parroquia
        FROM Agr_usuario 
-     INNER JOIN agr_provincia ON agr_usuario.id_provincia = agr_provincia.id_provincia  
-    //  INNER JOIN agr_caton ON agr_usuario.id_canton = agr_caton.id_canton
-    //  INNER JOIN agr_parroquia ON agr_usuario.id_parroquia = agr_parroquia.id_parroquia WHERE ci = '$usuario'";
+        INNER JOIN agr_provincia ON agr_usuario.id_provincia = agr_provincia.id_provincia  
+      INNER JOIN agr_caton ON agr_usuario.id_canton = agr_caton.id_canton
+      INNER JOIN agr_parroquia ON agr_usuario.id_parroquia = agr_parroquia.id_parroquia WHERE ci = '$usuario'";
 
        $last=pg_query($conexion,$sql);
        $row=pg_fetch_array($last);
@@ -39,9 +39,12 @@ $usuario = $_SESSION['usuario'];
         $ci=$row['ci'];
         $direccion=$row['direccion'];
         $asociacion=$row['asociacion'];
-         $provincia=$row['provincia'];
-         $canton=$row['canton'];
-          $parroquia=$row['parroquia'];
+        $id_provincia=$row['id_provincia'];
+        $provincia=$row['provincia'];
+        $id_canton=$row['id_canton'];
+        $canton=$row['canton'];
+        $id_parroquia=$row['id_parroquia'];
+        $parroquia=$row['parroquia'];
 
 
        
@@ -65,6 +68,8 @@ $usuario = $_SESSION['usuario'];
         <link href="../css/ionicons.min.css" rel="stylesheet" type="text/css" />
         <!-- Theme style -->
         <link href="../css/AdminLTE.css" rel="stylesheet" type="text/css" />
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
 
 
    
@@ -186,13 +191,13 @@ $usuario = $_SESSION['usuario'];
                                         <div class=" col-lg-6 align-items-center">
                                             <div class="input-group ">
                                                 <label>Nombres</label>
-                                                <input type="text" class="form-control" id="inputWarning"  name="nombres" value="<?php echo $nombres; ?>"  placeholder="Username" >
+                                                <input type="text" class="form-control"   name="nombres" value="<?php echo $nombres; ?>"  placeholder="Username" >
                                             </div><!-- /input-group -->
                                         </div><!-- /.col-lg-6 -->
                                         <div class="col-lg-6 align-items-center">
                                             <div class="input-group">
                                                 <label>Apellidos</label> 
-                                                <input type="text" class="form-control" id="inputWarning" name="apellidos"  value="<?php echo $apellidos; ?>" placeholder="Username" >
+                                                <input type="text" class="form-control" name="apellidos"  value="<?php echo $apellidos; ?>" placeholder="Username" >
                                             </div><!-- /input-group -->
                                         </div><!-- /.col-lg-6 -->
 
@@ -204,13 +209,13 @@ $usuario = $_SESSION['usuario'];
                                         <div class="col-lg-6 align-items-center">
                                             <div class="input-group">
                                                 <label>CI</label> 
-                                                <input type="text" class="form-control" id="inputWarning" name="ci"  value="<?php echo $ci; ?>" placeholder="Username" >
+                                                <input type="text" class="form-control"  name="ci"  value="<?php echo $ci; ?>"  readonly placeholder="Username" >
                                             </div><!-- /input-group -->
                                         </div><!-- /.col-lg-6 -->
                                         <div class="col-lg-6 align-items-center">
                                             <div class="input-group">
                                                 <label>Asociacion</label> 
-                                                <input type="text" class="form-control" id="inputWarning" name="asociacion"   value="<?php echo $asociacion; ?>" placeholder="Username" >
+                                                <input type="text" class="form-control" name="asociacion"  size='2'  value="<?php echo $asociacion; ?>" placeholder="Username" >
                                             </div><!-- /input-group -->
                                         </div><!-- /.col-lg-6 -->
 
@@ -232,6 +237,41 @@ $usuario = $_SESSION['usuario'];
                                             <div class="form-group">
                                             <label>Direccion</label>
                                             <input type="text" class="form-control" id="inputWarning" name="direccion"   value="<?php echo $direccion; ?>" placeholder="Enter ..."/>
+                                            
+                                            <div class="form-group">
+                                                <label for="provincia">
+                                                    Provincia:
+                                                </label>&nbsp;
+                                                <select  id="provincia" name="id_provincia" >
+                                                    <option  value="<?php echo $id_provincia; ?>"> <?php echo $provincia; ?> </option>
+                                                    <?php 
+                                                    $sql="SELECT Id_Provincia,nombre FROM Agr_Provincia ORDER BY nombre";
+                                                    $result=pg_query($conexion,$sql);
+                                                        while($row=pg_fetch_array($result)){
+                                                            echo '<option value="'.$row['id_provincia'].'">'.$row['nombre'].'</option>
+                                                            ';} ?>
+                                                </select>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="canton">
+                                                 Canton:
+                                                </label>
+                                                <select id="canton" name="id_canton" >
+                                                     <option  value="<?php echo $id_canton; ?>"> <?php echo $canton; ?> </option>
+                                                    
+                                                </select>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="parroquia">
+                                                Parroquia:
+                                                </label> 
+                                                <select id="parroquia" name="id_parroquia">
+                                                    <option  value="<?php echo $id_parroquia; ?>"> <?php echo $parroquia; ?> </option>
+                                                </select>
+                                            </div>  
+
+
+                                                                                                     
                                         
                                     </div><!-- /.col-lg-6 -->
 
@@ -243,51 +283,8 @@ $usuario = $_SESSION['usuario'];
                                         <button type="submit" class="btn btn-primary">Actualizar</button>
                                     </div>
 
-
-
-                                    <div class="container-fluid">
-                                        <div class="row">
-                                            <div class="col-md-12">
-                                                <div class="row">
-                                                    <div class="col-md-2">
-                                                    </div>
-                                                    <div class="col-md-4">
-                                                        <form role="form" action="boton.php" method="POST">
-                                                            <div class="form-group">
-                                                                <label for="provincia">
-                                                                    Provincia:
-                                                                </label>&nbsp;
-                                                                <select class="selectpicker" id="provincia" name="provincia" require>
-                                                                    <option class="selectpicker" value="0">Seleccionar una Provincia</option>
-                                                                <?php 
-                                                                $sql="SELECT Id_Provincia,nombre FROM Agr_Provincia ORDER BY nombre";
-                                                                $result=pg_query($conexion,$sql);
-                                                                    while($fila=pg_fetch_array($result)){
-                                                                        echo '
-                                                                        <option value="'.$fila['id_provincia'].'">'.$fila['nombre'].'</option>
-                                                                        ';}
-                                                                ?>
-                                                                </select>
-                                                                </div>
-                                                                <div class="form-group">
-                                                                <label for="canton">
-                                                                    Canton:
-                                                                </label>&nbsp;&nbsp;&nbsp;&nbsp;
-                                                                <select id="canton" name="canton" require></select>
-                                                                </div>
-                                                                <div class="form-group">
-                                                                <label for="parroquia">
-                                                                    Parroquia:
-                                                                </label> 
-                                                                <select id="parroquia" name="parroquia" require></select>
-                                                            </div>
-                                                            
+                      
                                                         
-                                                        
-                                                            
-                                                            <button type="submit" class="btn btn-success">
-                                                                siguiente
-                                                            </button>
                                 </form>
 
                                
@@ -301,13 +298,13 @@ $usuario = $_SESSION['usuario'];
         </div><!-- ./wrapper -->
 
 
-        <script>
+<script>
 $(document).ready(function(){
 $("#provincia").change(function(){
 
     $("#provincia option:selected").each(function(){
         id_provincia = $(this).val();
-        $.post("../../Procesos/getProvincia.php", {id_provincia: id_provincia
+        $.post("./proceso/getProvincia.php", {id_provincia: id_provincia
         }, function(data){
             $("#canton").html(data);
         });
@@ -320,7 +317,7 @@ $("#canton").change(function(){
 
     $("#canton option:selected").each(function(){
         id_canton = $(this).val();
-        $.post("../../Procesos/getCanton.php", {id_canton: id_canton
+        $.post("./proceso/getCanton.php", {id_canton: id_canton
         }, function(data){
             $("#parroquia").html(data);
         });
@@ -329,9 +326,8 @@ $("#canton").change(function(){
 });
 </script>
 
-
         <!-- jQuery 2.0.2 -->
-        <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.2/jquery.min.js"></script>
+         <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.2/jquery.min.js"></script> 
         <!-- Bootstrap -->
         <script src="../js/bootstrap.min.js" type="text/javascript"></script>
         <!-- AdminLTE App -->
