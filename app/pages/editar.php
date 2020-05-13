@@ -186,18 +186,22 @@ $usuario = $_SESSION['usuario'];
                                     <h3 class="box-title">Perfil</h3>
                                 </div><!-- /.box-header -->
                                 <!-- form start -->
-                                <form role="form" action="boton.php" method="post">
+
+
+
+                                <div id="respuesta"></div>
+                                <form role="form" >
                                     <div class="row   mt-">
                                         <div class=" col-lg-6 align-items-center">
                                             <div class="input-group ">
                                                 <label>Nombres</label>
-                                                <input type="text" class="form-control"   name="nombres" value="<?php echo $nombres; ?>"  placeholder="Username" >
+                                                <input type="text" class="form-control" id="nombres"  value="<?php echo $nombres; ?>"  placeholder="Username" >
                                             </div><!-- /input-group -->
                                         </div><!-- /.col-lg-6 -->
                                         <div class="col-lg-6 align-items-center">
                                             <div class="input-group">
                                                 <label>Apellidos</label> 
-                                                <input type="text" class="form-control" name="apellidos"  value="<?php echo $apellidos; ?>" placeholder="Username" >
+                                                <input type="text" class="form-control" id="apellidos"  value="<?php echo $apellidos; ?>" placeholder="Username" >
                                             </div><!-- /input-group -->
                                         </div><!-- /.col-lg-6 -->
 
@@ -209,13 +213,13 @@ $usuario = $_SESSION['usuario'];
                                         <div class="col-lg-6 align-items-center">
                                             <div class="input-group">
                                                 <label>CI</label> 
-                                                <input type="text" class="form-control"  name="ci"  value="<?php echo $ci; ?>"  readonly placeholder="Username" >
+                                                <input type="text" class="form-control"  id="ci"  value="<?php echo $ci; ?>"  readonly placeholder="Username" >
                                             </div><!-- /input-group -->
                                         </div><!-- /.col-lg-6 -->
                                         <div class="col-lg-6 align-items-center">
                                             <div class="input-group">
                                                 <label>Asociacion</label> 
-                                                <input type="text" class="form-control" name="asociacion"  size='2'  value="<?php echo $asociacion; ?>" placeholder="Username" >
+                                                <input type="text" class="form-control" id="asociacion"  size='2'  value="<?php echo $asociacion; ?>" placeholder="Username" >
                                             </div><!-- /input-group -->
                                         </div><!-- /.col-lg-6 -->
 
@@ -230,19 +234,19 @@ $usuario = $_SESSION['usuario'];
                                     <div class="box-body">
                                             <div class="form-group">
                                             <label>Correo</label>
-                                            <input type="text" class="form-control" id="inputWarning" name="correo"   value="<?php echo $correo; ?>" placeholder="Enter ..."/>
+                                            <input type="text" class="form-control" id="correo"   value="<?php echo $correo; ?>" placeholder="Enter ..."/>
                                         
                                     </div><!-- /.col-lg-6 -->
                                     <div class="box-body">
                                             <div class="form-group">
                                             <label>Direccion</label>
-                                            <input type="text" class="form-control" id="inputWarning" name="direccion"   value="<?php echo $direccion; ?>" placeholder="Enter ..."/>
+                                            <input type="text" class="form-control"  id="direccion"   value="<?php echo $direccion; ?>" placeholder="Enter ..."/>
                                             
                                             <div class="form-group">
                                                 <label for="provincia">
                                                     Provincia:
                                                 </label>&nbsp;
-                                                <select  id="provincia" name="id_provincia" >
+                                                <select  id="provincia"  >
                                                     <option  value="<?php echo $id_provincia; ?>"> <?php echo $provincia; ?> </option>
                                                     <?php 
                                                     $sql="SELECT Id_Provincia,nombre FROM Agr_Provincia ORDER BY nombre";
@@ -256,7 +260,7 @@ $usuario = $_SESSION['usuario'];
                                                 <label for="canton">
                                                  Canton:
                                                 </label>
-                                                <select id="canton" name="id_canton" >
+                                                <select id="canton" >
                                                      <option  value="<?php echo $id_canton; ?>"> <?php echo $canton; ?> </option>
                                                     
                                                 </select>
@@ -265,7 +269,7 @@ $usuario = $_SESSION['usuario'];
                                                 <label for="parroquia">
                                                 Parroquia:
                                                 </label> 
-                                                <select id="parroquia" name="id_parroquia">
+                                                <select id="parroquia" >
                                                     <option  value="<?php echo $id_parroquia; ?>"> <?php echo $parroquia; ?> </option>
                                                 </select>
                                             </div>  
@@ -275,17 +279,14 @@ $usuario = $_SESSION['usuario'];
                                         
                                     </div><!-- /.col-lg-6 -->
 
-
-
-                                    
-           
                                     <div class="box-footer">
-                                        <button type="submit" class="btn btn-primary">Actualizar</button>
+                                        <button type="button" id="enviar" class="btn btn-primary">Actualizar</button>
                                     </div>
 
                       
                                                         
                                 </form>
+                                
 
                                
                             </div><!-- /.box -->
@@ -324,6 +325,41 @@ $("#canton").change(function(){
     });
 })
 });
+</script>
+
+<script>
+$('#enviar').click(function () {
+
+var Nombres = document.getElementById('nombres').value;
+var Apellidos = document.getElementById('apellidos').value;
+var Correo = document.getElementById('correo').value;
+var Provincia = document.getElementById('provincia').value;
+var Canton = document.getElementById('canton').value;
+var Parroquia = document.getElementById('parroquia').value;
+var direccion = document.getElementById('direccion').value;
+var Asociacion = document.getElementById('asociacion').value;
+
+var ruta = "nombres=" + Nombres + "&apellidos="+ Apellidos +
+ "&correo="+Correo + "&provincia="+Provincia + "&canton="+Canton +
+ "&parroquia="+Parroquia + "&direccion="+direccion + "&asociacion="+Asociacion;
+
+$.ajax({
+  url: 'boton.php',
+  type: 'POST',
+  data: ruta,
+})
+  .done(function (res) {
+	$('#respuesta').html(res)
+  })
+  .fail(function () {
+	console.log("error");
+  })
+  .always(function () {
+	console.log("complete");
+  });
+});
+
+
 </script>
 
         <!-- jQuery 2.0.2 -->

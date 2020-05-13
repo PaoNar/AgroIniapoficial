@@ -1,5 +1,14 @@
-  
-<?php include '../Conexion/conexion2.php';
+ <?php
+session_start();
+//error_reporting(0);  No mostrar los errores 
+$varsesion = $_SESSION['usuario'];
+
+if($varsesion == null || $varsesion = ''){
+echo 'Usted no tiene autorizacion';
+die();
+}else{ 
+
+ include '../Conexion/conexion2.php';
 $conexion=conexion();?>
 <!DOCTYPE html>
 <html lang="en">
@@ -28,7 +37,9 @@ $conexion=conexion();?>
 				<div class="col-md-2">
 				</div>
 				<div class="col-md-4">
-					<form role="form" action="../Procesos/RegDireccion.php" method="POST">
+
+                <div class="modal-footer display-footer" id="respuesta"></div>
+					<form role="form" >
                         <div class="form-group">
 							<label for="provincia">
 								Provincia:
@@ -65,12 +76,12 @@ $conexion=conexion();?>
 							<label for="Ddomicilio">
 								Dirección Domiciliaria:
 							</label>
-                            <textarea class="form-control" name="Ddireccion" rows="3" require></textarea>
+                            <textarea class="form-control" id="direccion" rows="3" require></textarea>
                         </div>
                       
                        
 						
-						<button type="submit" class="btn btn-success">
+						<button type="button" id="enviar" class="btn btn-success">
 							siguiente
                         </button>
                     </form>
@@ -107,7 +118,36 @@ $("#canton").change(function(){
     });
 })
 });
+
+
+$('#enviar').click(function () {
+
+var Provincia = document.getElementById('provincia').value;
+var Canton = document.getElementById('canton').value;
+var Parroquia = document.getElementById('parroquia').value;
+var Direccion = document.getElementById('direccion').value;
+
+var ruta = "provincia=" + Provincia + "&canton="+ Canton + "&parroquia="+ Parroquia + "&direccion="+ Direccion;
+
+
+$.ajax({
+  url: '../Procesos/RegDireccion.php',
+  type: 'POST',
+  data: ruta,
+})
+  .done(function (res) {
+	$('#respuesta').html(res)
+  })
+  .fail(function () {
+	console.log("error");
+  })
+  .always(function () {
+	console.log("complete");
+  });
+});
+
 </script>
 </div>
 </body>
 </html>
+<?php };?>

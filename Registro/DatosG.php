@@ -1,5 +1,23 @@
+<?php
+session_start();
+error_reporting(0); // No mostrar los errores 
+$validar = $_SESSION['usuario'];
+
+if($validar == null || $validar = ''){
+echo 'Upss!! El registro ha terminado';
+die();
+}else {
+
+?>
+
+
+
+
 <?php include '../Conexion/conexion2.php';
-$conexion=conexion();?>
+$conexion=conexion();
+
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,8 +25,9 @@ $conexion=conexion();?>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Registro de Usuario</title>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.11.2/css/all.css">
 	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap">
@@ -27,8 +46,10 @@ $conexion=conexion();?>
 				<div class="col-md-2">
 				</div>
 				<div class="col-md-4">
+
+				<div class="modal-footer display-footer" id="respuesta"></div>
 					
-					<form action="../Procesos/RegDatosG.php" method="post" role="form">
+					<form  role="form">
 
 					<fieldset>
             <legend class="text-center header">Registro</legend>
@@ -38,7 +59,7 @@ $conexion=conexion();?>
 							<label for="nombres">
 								Nombres:
 							</label>
-							<input type="text" class="form-control" name="nombres" />
+							<input type="text" class="form-control" id="nombres" />
                         </div>
                         <div class="form-group">
 
@@ -47,7 +68,7 @@ $conexion=conexion();?>
 								 <span ><i class="fa fa-user bigicon"></i></span>
 								Apellidos:
 							</label>
-							<input type="text" class="form-control" name="apellidos" />
+							<input type="text" class="form-control" id="apellidos" />
 
               </div>
               <div class="form-group">
@@ -57,9 +78,9 @@ $conexion=conexion();?>
 							<label for="correo">
 								Corréo Electrónico:
 							</label>
-							<input type="email" class="form-control" name="correo" />
+							<input type="email" class="form-control" id="correo" />
                         </div>
-						<button type="submit" class="btn btn-success">
+						<button type="button" id="enviar" class="btn btn-success">
 							Siguiente
 						</button>
 
@@ -77,5 +98,36 @@ $conexion=conexion();?>
 </div>
 
 </div>
+
+<script>
+
+$('#enviar').click(function () {
+
+	var Nombres = document.getElementById('nombres').value;
+  var Apellidos = document.getElementById('apellidos').value;
+  var Correo = document.getElementById('correo').value;
+
+
+  var ruta = "nombres=" + Nombres + "&apellidos="+ Apellidos +
+ "&correo="+Correo
+
+  $.ajax({
+    url: '../Procesos/RegDatosG.php',
+    type: 'POST',
+    data: ruta,
+  })
+    .done(function (res) {
+      $('#respuesta').html(res)
+    })
+    .fail(function () {
+      console.log("error");
+    })
+    .always(function () {
+      console.log("complete");
+    });
+});
+
+</script>
 </body>
 </html>
+<?php };?>

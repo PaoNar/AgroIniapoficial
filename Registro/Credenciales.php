@@ -1,3 +1,15 @@
+<?php
+session_start();
+error_reporting(0); // No mostrar los errores 
+$validar = $_SESSION['usuario'];
+
+if($validar == null || $validar = ''){
+echo 'NO tiene permiso, se termino el registro';
+die();
+}else {
+
+?>
+
 <!doctype html>
 <html class="no-js">
 <head>
@@ -54,7 +66,7 @@
 							<label for="clave">
 								Contraseña:
 							</label>
-							<input type="password" class="check-seguridad form-control" name="clave"/>
+							<input type="password" class="check-seguridad form-control" name="clave" require/>
                             </div>
                         
 						<button type="submit" class="btn btn-success">
@@ -70,31 +82,7 @@
 		</div>
         </div>
 		</div>
-	<!-- <script>
-		jQuery(function($) {
-			
-			$(".check-seguridad").strength({
-				templates: {
-    			toggle: '<span class="input-group-addon"><span class="glyphicon glyphicon-eye-open {toggleClass}"></span></span>'
-                
-                },
-                scoreLables: {
-                        empty: 'Vacío',
-                        invalid: 'Invalido',
-                        weak: 'Débil',
-                        good: 'Bueno',
-                        strong: 'Fuerte'
-                    }, 
-                scoreClasses: {
-                        empty: '',
-                        invalid: 'label-danger',
-                        weak: 'label-warning',
-                        good: 'label-info',
-                        strong: 'label-success'
-                    },
-			});
-		});
-    </script> -->
+	
 <script>
 $(document).ready(function(){
 $("#asociacion").change(function(){
@@ -111,3 +99,4 @@ $("#asociacion").change(function(){
     
 </body>
 </html>
+<?php }; ?>
