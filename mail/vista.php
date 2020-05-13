@@ -50,12 +50,12 @@ $usuario = $_SESSION['usuario'];
 				<!-- Default form login -->
 					<form class="text-center border border-light p-5"  action="validar.php" method="post">
 
-							<strong><h2 class="h4 mb-4">Recuperacion de Contraseña</h2></strong>
+							
 
-							<p class="h4 mb-4">Porfavor ingrese su correo electronico: </p>
+							<h2>Porfavor ingrese su correo electronico: </h2>
 
 							<!-- Email -->
-							<input type="email" id="defaultLoginFormEmail" class="form-control mb-4" name="correo" placeholder="mail">
+							<input type="email"  class="form-control mb-4" name="correo" placeholder="mail">
 
               <!-- Recuperar button -->
 							<button class="btn btn-info btn-block my-4" type="submit">Enviar</button>

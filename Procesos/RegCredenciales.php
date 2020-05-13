@@ -66,6 +66,7 @@ die();
                                           
                                           </div>
                                           ';
+                                          session_destroy();
                             }
 
         

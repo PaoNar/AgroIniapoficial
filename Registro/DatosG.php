@@ -59,7 +59,7 @@ $conexion=conexion();
 							<label for="nombres">
 								Nombres:
 							</label>
-							<input type="text" class="form-control" id="nombres" />
+							<input type="text" class="form-control" id="nombres" minlength="4"   />
                         </div>
                         <div class="form-group">
 
@@ -68,7 +68,7 @@ $conexion=conexion();
 								 <span ><i class="fa fa-user bigicon"></i></span>
 								Apellidos:
 							</label>
-							<input type="text" class="form-control" id="apellidos" />
+							<input type="text" class="form-control" id="apellidos" minlength="4"   />
 
               </div>
               <div class="form-group">
@@ -78,7 +78,7 @@ $conexion=conexion();
 							<label for="correo">
 								Corréo Electrónico:
 							</label>
-							<input type="email" class="form-control" id="correo" />
+							<input type="email" class="form-control" id="correo"  />
                         </div>
 						<button type="button" id="enviar" class="btn btn-success">
 							Siguiente

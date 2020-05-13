@@ -2,7 +2,7 @@
 session_start();
 error_reporting(0); 
 
-include_once '../Conexion/conexion2.php';
+include '../Conexion/conexion2.php';
 $conexion=conexion();
 
 $usuario = $_SESSION['usuario'];

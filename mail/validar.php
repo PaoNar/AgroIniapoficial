@@ -1,6 +1,6 @@
 <?php
 session_start();
-include_once '../Conexion/conexion2.php';
+include '../Conexion/conexion2.php';
 $conexion=conexion();
 
 
@@ -27,6 +27,7 @@ if(trim($_POST["correo"]) != "")
    
    echo 'Se ha enviado su codigo de verificacion   <p>';
       echo '<script> location.href="enlace.php"; </script>';
+      
   
    //Elimina el siguiente comentario si quieres que re-dirigir automáticamente a index.php
    /*Ingreso exitoso, ahora sera dirigido a la pagina principal.

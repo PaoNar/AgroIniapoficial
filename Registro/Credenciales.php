@@ -66,7 +66,7 @@ die();
 							<label for="clave">
 								Contraseña:
 							</label>
-							<input type="password" class="check-seguridad form-control" name="clave" require/>
+							<input type="password" class="check-seguridad form-control" name="clave" minlength="5" required/>
                             </div>
                         
 						<button type="submit" class="btn btn-success">
