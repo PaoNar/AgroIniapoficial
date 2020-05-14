@@ -1,4 +1,7 @@
 <?php
+
+include_once '../../Conexion/conexion2.php';
+$conexion=conexion();
 session_start();
 error_reporting(0); // No mostrar los errores 
 $validar = $_SESSION['usuario'];
@@ -6,6 +9,8 @@ $validar = $_SESSION['usuario'];
 if($validar == null || $validar = ''){
 echo 'Solicitar Permiso';
 die();
+
+$usuario = $_SESSION['usuario'];
 }
 ?>
 

@@ -37,7 +37,7 @@ die();
 
               $asociacion = $_POST['asociacion'];
                $clave = md5($_POST['clave']);
-               $usuario = $_SESSION['usuario'];
+               // $usuario = $_SESSION['usuario'];
 
                if($clave == null || $clave == '0'){
                   echo '<div class="alert alert-danger" role="alert">
@@ -48,7 +48,7 @@ die();
                   }else{
                         
                       $sql=" UPDATE Agr_usuario SET clave = '$clave', asociacion ='$asociacion', id_estado = (select Id_Estado from Agr_Estado where nombre_corto = 'R'), 
-                       id_tipo_usuario = (select id_tipo_usuario from Agr_Tipo_Usuario where nombre = 'U') WHERE ci= '$usuario'";
+                       id_tipo_usuario = (select id_tipo_usuario from Agr_Tipo_Usuario where nombre = 'U')";
                       $result=pg_query($conexion,$sql);
 
                       echo '
@@ -67,6 +67,7 @@ die();
                                           </div>
                                           ';
                                           session_destroy();
+                                          
                             }
 
         

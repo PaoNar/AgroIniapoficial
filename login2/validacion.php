@@ -8,11 +8,8 @@ session_start();
 //      header("Location: ../app/perfil.php");
 
 //AQUI CONECTAMOS A LA BASE DE DATOS DE POSTGRES
-$conex = "host=localhost port=5432 dbname=AgroIniap user=postgres password=12345";
-
-
-$cnx = pg_connect($conex) or die ("<h1>Error de conexion.</h1> ". pg_last_error());
-
+include '../Conexion/conexion2.php';
+$conexion=conexion();
 
 
 if(trim($_POST["ci"]) != "" && $_POST["clave"] != "")
@@ -26,9 +23,10 @@ if(trim($_POST["ci"]) != "" && $_POST["clave"] != "")
  $password = strtolower(htmlentities ($_POST["clave"], ENT_QUOTES));
  $passwordencrip = md5($password);
 
- $result = pg_query('SELECT clave, ci FROM agr_usuario WHERE ci=\''.$usuario.'\'');
- if($row = pg_fetch_array($result)){
-  if($row["clave"] == $passwordencrip){
+ $sql ="SELECT clave, ci FROM agr_usuario WHERE ci='$usuario'";
+ $result=pg_query($conexion,$sql);
+ if($fila=pg_fetch_array($result)){
+  if($fila["clave"] == $passwordencrip){
    
   $_SESSION['usuario'] = $usuario;
    header("Location: ../app/pages/perfil.php");

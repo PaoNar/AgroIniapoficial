@@ -5,14 +5,14 @@ error_reporting(0);
 include_once '../Conexion/conexion2.php';
 $conexion=conexion();
 
-$usuario = $_SESSION['usuario'];
+// $usuario = $_SESSION['usuario'];
 
-       $sql="SELECT correo FROM Agr_usuario WHERE ci = '$usuario'";
-       $last=pg_query($conexion,$sql);
-       $fila=pg_fetch_array($last);
+//        $sql="SELECT correo FROM Agr_usuario WHERE ci = '$usuario'";
+//        $last=pg_query($conexion,$sql);
+//        $fila=pg_fetch_array($last);
 
      
-       $correo = $fila['correo'];
+//        $correo = $fila['correo'];
 ?>
 
 <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
@@ -48,22 +48,20 @@ $usuario = $_SESSION['usuario'];
 				</div>
 				<div class="col-md-4">
 				<!-- Default form login -->
-					<form class="text-center border border-light p-5"  action="validar.php" method="post">
+					<form class="text-center border border-light p-5"  action="enlace.php" method="post">
 
 							
 
 							<h2>Porfavor ingrese su correo electronico: </h2>
 
 							<!-- Email -->
-							<input type="email"  class="form-control mb-4" name="correo" placeholder="mail">
+							<input type="email"  class="form-control mb-4" name="correo"  placeholder="mail">
 
               <!-- Recuperar button -->
 							<button class="btn btn-info btn-block my-4" type="submit">Enviar</button>
 			
-
 					</form>
-					<!-- Default form login -->
-													
+					<!-- Default form login -->													
 
 	</div>
 				<div class="col-md-4">
