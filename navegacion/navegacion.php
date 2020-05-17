@@ -16,7 +16,7 @@
       <a class="navbar-brand"  href="#">Instituto Nacional de Investigaciones Agropecuarias</a>
     </div>
     
-    <ul class="nav nav navbar-right">
+    <ul class=" nav navbar-right">
       <li><a href="../login2/login.php"><span class="glyphicon glyphicon-user"></span> Entrar</a></li>
       <li><a href="../Registro/Cedula.php"><span class="glyphicon glyphicon-log-in"></span> Registrarse</a></li>
     </ul>

@@ -12,22 +12,28 @@ error_reporting(0);
 include_once '../Conexion/conexion2.php';
 $conexion=conexion();
 
-$usuario = $_SESSION['usuario'];
-
-       $sql="SELECT correo FROM Agr_usuario WHERE ci = '$usuario'";
-       $correo = $fila['correo'];
+        // $sql="SELECT correo FROM Agr_usuario WHERE correo = '$correo'";
+        // $last=pg_query($conexion,$sql);
+        // $row=pg_fetch_array($last);
+        // $correo = $row['correo'];
 
        if(trim($_POST['correo']) != ""){
           
-          $correo = strtolower(htmlentities($_POST["correo"], ENT_QUOTES));
-          $result = pg_query('SELECT correo FROM agr_usuario WHERE correo=\''.$correo.'\'');
+          $correo2 = strtolower(htmlentities($_POST["correo"], ENT_QUOTES));
+
+          //  $sql="SELECT correo FROM Agr_usuario WHERE correo = '$correo2'";
+          // $last=pg_query($conexion,$sql);
+          // $row=pg_fetch_array($last);
+          // $correo = $row['correo'];
+
+          $result = pg_query('SELECT correo FROM agr_usuario WHERE correo =\''.$correo2.'\'');
           if($row = pg_fetch_array($result)){
-            if($row["correo"] == $correo){
-            
-            echo 'Se ha enviado su codigo de verificacion   <p>';
-              
+            if($row["correo"] == $correo2){
+             $_SESSION['correo']= $correo2;
+
               $mail = new PHPMailer(true);
               try {
+                 
                   $mail->isSMTP();
                   $mail->SMTPDebug = 2;     
                   $mail->SMTPOptions = array( 'ssl' => array( 'verify_peer' => false,
@@ -46,22 +52,56 @@ $usuario = $_SESSION['usuario'];
                   $mail->Port       = 465;                                    // TCP port to connect to, use 465 for `PHPMailer::ENCRYPTION_SMTPS` above
 
                   $mail->setFrom('estefaypst20@gmail.com', 'Paola Narvaez');
-                  $mail->AddAddress( $correo); 
+                  $mail->AddAddress( $correo2); 
                     // Add a recipient
 
                   // Content
                   $mail->isHTML(true);                                  // Set email format to HTML
                   $mail->Subject = 'Asunto muy importante';
-                  $mail->Body = '<a href="http://localhost/OficialIniap/mail/recuperar.php">recuperar</a>';
+                  $mail->Body = '<a href="http://localhost/OficialIniap/mail/recuperar.php">Enlace para su nueva contraseña</a>';
                   $mail->AltBody = 'Asunto muy importante';
 
 
 
                   $mail->Send();
-                  echo "se envio";
+                  echo '  <br><br>
+                                        <style>
+                                            img {
+                                              
+                                              opacity: 0.8;
+                                              height: 100%;
+                                              width: 100%;
+                                              position:absolute;
+                                            }
+
+                                            h4{
+                                              position:absolute;
+                                              font-size:20px;
+                                              top:25%:
+                                              left:50%;
+                                              right:50%;
+                                            }
+
+                                            
+
+                                          </style>
+
+                                          <body>
+                                          <img src="../img/logo2.jpg" >
+                                          <div class="col-md-12">
+                                              <h4  >
+                                                  Excelente, has completado el registro con éxito!
+                                                  <p>Haz <a href="../login2/login.php">clic aqui para volver al formulario</a></p>
+                                              </h4>
+                                             
+                                              
+                                            </div>
+                                          </body>' ;
+                
               } catch (Exception $e) {
                   
-                      echo 'Mailer Error: ' . $mail->ErrorInfo;;
+                      echo 'Mailer Error: ' . $mail->ErrorInfo;
+                      echo "<p>Haz <a href='../login2/login.php'>clic para volver al formulario</a></p>";
               }
             
             }else{

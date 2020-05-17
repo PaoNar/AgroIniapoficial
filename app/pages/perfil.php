@@ -2,6 +2,8 @@
 <?php
 session_start();
 error_reporting(0); // No mostrar los errores 
+include_once  '../../Conexion/conexion2.php';
+$conexion=conexion();
 $validar = $_SESSION['usuario'];
 
 if($validar == null || $validar = ''){
@@ -11,16 +13,9 @@ die();
 
 
 
-include_once  '../../Conexion/conexion2.php';
-$conexion=conexion();
+
 
 $usuario = $_SESSION['usuario'];
-
-    //    $sql2="SELECT nombres, apellidos, correo, ci, direccion, asociacion, agr_provincia.nombre as provincia
-    //    FROM Agr_usuario 
-    //    INNER JOIN agr_provincia ON agr_usuario.id_provincia = agr_provincia.id_provincia
-    //     WHERE ci = '$usuario'";
-
 
         $sql="SELECT nombres, apellidos, correo, ci, direccion, agr_usuario.asociacion, agr_provincia.nombre as provincia, agr_caton.nombre as canton, agr_parroquia.nombre as parroquia
        FROM Agr_usuario 
@@ -62,14 +57,6 @@ $usuario = $_SESSION['usuario'];
         <link href="../css/AdminLTE.css" rel="stylesheet" type="text/css" />
 
 
-   
-
-        <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-        <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-        <!--[if lt IE 9]>
-          <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-          <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
-        <![endif]-->
     </head>
     
     <body class="skin-blue">
@@ -147,11 +134,7 @@ $usuario = $_SESSION['usuario'];
                                 <i class="fa fa-th"></i> <span>MAPA</span> 
                             </a>
                         </li>
-                        <li class="active">
-                            <a href="actividades.php">
-                                <i class="fa fa-th"></i> <span>Actividades</span>
-                            </a>
-                        </li>
+                        
                         
                     </ul>
                 </section>
@@ -168,7 +151,7 @@ $usuario = $_SESSION['usuario'];
 
                 <!-- Main content -->
                 <section class="content">
-                    <div class="row center-block">
+                    <div class="row ">
                         <!-- left column -->
                         <div class="col-md-6 align-items-center">
                             <!-- general form elements -->
@@ -177,88 +160,88 @@ $usuario = $_SESSION['usuario'];
                                     <h3 class="box-title">Perfil</h3>
                                 </div><!-- /.box-header -->
                                 <!-- form start -->
+
+
                                 <form role="form" action="editar.php" method="post">
-                                    <div class="row   mt-">
+                                    <div class="box-body  ">
                                         <div class=" col-lg-6 align-items-center">
                                             <div class="input-group ">
                                                 <label>Nombres</label>
-                                                <input type="text" class="form-control" id="inputWarning"   value="<?php echo $nombres; ?>" disabled  placeholder="Username" >
+                                                <input type="text" class="form-control" name="nombres"  value="<?php echo $nombres; ?>"  readonly >
                                             </div><!-- /input-group -->
                                         </div><!-- /.col-lg-6 -->
                                         <div class="col-lg-6 align-items-center">
                                             <div class="input-group">
                                                 <label>Apellidos</label> 
-                                                <input type="text" class="form-control" id="inputWarning" value="<?php echo $apellidos; ?>" disabled placeholder="Username" >
-                                            </div><!-- /input-group -->
-                                        </div><!-- /.col-lg-6 -->
-                                        
-
-                                        <div class="col-lg-6 align-items-center">
-                                            <div class="input-group">
-                                                <label>Provincia</label> 
-                                                <input type="text" class="form-control" id="inputWarning" value="<?php echo $provincia; ?>" disabled placeholder="Username" >
-                                            </div><!-- /input-group -->
-                                        </div><!-- /.col-lg-6 -->
-
-                                        <div class="col-lg-6 align-items-center">
-                                            <div class="input-group">
-                                                <label>Canton</label> 
-                                                <input type="text" class="form-control" id="inputWarning" value="<?php echo $canton; ?>" disabled placeholder="Username" >
-                                            </div><!-- /input-group -->
-                                        </div><!-- /.col-lg-6 -->
-
-                                        <div class="col-lg-6 align-items-center">
-                                            <div class="input-group">
-                                                <label>Parroquia</label> 
-                                                <input type="text" class="form-control" id="inputWarning" value="<?php echo $parroquia; ?>" disabled placeholder="Username" >
+                                                <input type="text" class="form-control" name="apellidos"  value="<?php echo $apellidos; ?>"  readonly >
                                             </div><!-- /input-group -->
                                         </div><!-- /.col-lg-6 -->
 
                                         <div class="col-lg-6 align-items-center">
                                             <div class="input-group">
                                                 <label>CI</label> 
-                                                <input type="text" class="form-control" id="inputWarning" value="<?php echo $ci; ?>" disabled placeholder="Username" >
+                                                <input type="text" class="form-control"  name="ci"  value="<?php echo $ci; ?>"  readonly  >
                                             </div><!-- /input-group -->
                                         </div><!-- /.col-lg-6 -->
                                         <div class="col-lg-6 align-items-center">
                                             <div class="input-group">
                                                 <label>Asociacion</label> 
-                                                <input type="text" class="form-control" id="inputWarning" value="<?php echo $asociacion; ?>" disabled placeholder="Username" >
+                                                <input type="text" class="form-control" name="asociacion"  size='2'  value="<?php echo $asociacion; ?>" readonly >
                                             </div><!-- /input-group -->
                                         </div><!-- /.col-lg-6 -->
-                                       
-
-
-                                        
-
-                                    </div><!-- /.row -->
-                                    <div class="box-body">
+                                        <div class="box-body">
                                             <div class="form-group">
                                             <label>Correo</label>
-                                            <input type="text" class="form-control" id="inputWarning" value="<?php echo $correo; ?>" disabled placeholder="Enter ..."/>
+                                            <input type="text" class="form-control" name="correo"   value="<?php echo $correo; ?>" readonly/>
                                         
-                                    </div><!-- /.col-lg-6 -->
+                                        </div><!-- /.col-lg-6 -->
+                                    </div><!-- /.row -->
+                                    
                                     <div class="box-body">
                                             <div class="form-group">
                                             <label>Direccion</label>
-                                            <input type="text" class="form-control" id="inputWarning" value="<?php echo $direccion; ?>" disabled placeholder="Enter ..."/>
-                                        
+                                            <input type="text" class="form-control"  name="direccion"   value="<?php echo $direccion; ?>" readonly/>
+                                            
+                                            <div class="box-body">
+                                                <label for="provincia">
+                                                    Provincia:
+                                                </label>&nbsp;
+                                                <select  id="provincia" readonly >
+                                                    <option value="<?php echo $id_provincia; ?> "> <?php echo $provincia; ?>  </option>
+                                                    <?php 
+                                                    $sql="SELECT Id_Provincia,nombre FROM Agr_Provincia ORDER BY nombre";
+                                                    $result=pg_query($conexion,$sql);
+                                                        while($row=pg_fetch_array($result)){
+                                                            echo '<option value="'.$row['id_provincia'].'">'.$row['nombre'].'</option>
+                                                            ';} ?>
+                                                </select>
+                                            </div>
+                                            <div class="box-body">
+                                                <label for="canton" readonly>
+                                                 Canton:
+                                                </label>
+                                                <select id="canton" name="canton" >
+                                                     <option   value="<?php echo $id_canton; ?>"> <?php echo $canton; ?> </option>
+                                                    
+                                                </select>
+                                            </div>
+                                            <div class="box-body">
+                                                <label for="parroquia">
+                                                Parroquia:
+                                                </label> 
+                                                <select readonly id="parroquia" name="canton" >
+                                                    <option   value="<?php echo $id_parroquia; ?>"> <?php echo $parroquia; ?> </option>
+                                                </select>
+                                            </div>  
+
                                     </div><!-- /.col-lg-6 -->
 
-
-
-
-                                    
-                                    
-
-                                   
                                     <div class="box-footer">
-                                        <button type="submit" href="editar.php" class="btn btn-primary">EDITAR</button>
+                                        <button type="submit" href="editar.php" class="btn btn-primary">Editar</button>
                                     </div>
+                  
                                 </form>
-
                                 
-                               
                             </div><!-- /.box -->
                         </div><!--/.col (right) -->
                     </div>   <!-- /.row -->

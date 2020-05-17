@@ -8,11 +8,6 @@ echo 'Solicitar Permiso';
 die();
 }
 
-
-
-
-
-
 include_once  '../../Conexion/conexion2.php';
 $conexion=conexion();
 
@@ -49,10 +44,6 @@ $usuario = $_SESSION['usuario'];
 
        
 ?>
-
-
-
-
 
 <!DOCTYPE html>
 <html>
@@ -156,11 +147,6 @@ $usuario = $_SESSION['usuario'];
                                 <i class="fa fa-th"></i> <span>MAPA</span> 
                             </a>
                         </li>
-                        <li class="active">
-                            <a href="actividades.php">
-                                <i class="fa fa-th"></i> <span>Actividades</span>
-                            </a>
-                        </li>
                         
                     </ul>
                 </section>
@@ -168,16 +154,12 @@ $usuario = $_SESSION['usuario'];
             </aside>
 
 
-
-            
-
             <!-- Right side column. Contains the navbar and content of the page -->
             <aside class="right-side">
                 
-
                 <!-- Main content -->
                 <section class="content">
-                    <div class="row center-block">
+                    <div class="row ">
                         <!-- left column -->
                         <div class="col-md-6 align-items-center">
                             <!-- general form elements -->
@@ -191,7 +173,7 @@ $usuario = $_SESSION['usuario'];
 
                                 <div id="respuesta"></div>
                                 <form role="form" >
-                                    <div class="row   mt-">
+                                    <div class="box-body  ">
                                         <div class=" col-lg-6 align-items-center">
                                             <div class="input-group ">
                                                 <label>Nombres</label>
@@ -205,11 +187,6 @@ $usuario = $_SESSION['usuario'];
                                             </div><!-- /input-group -->
                                         </div><!-- /.col-lg-6 -->
 
-                                      
-                    
-                                        
-                                       
-
                                         <div class="col-lg-6 align-items-center">
                                             <div class="input-group">
                                                 <label>CI</label> 
@@ -222,27 +199,20 @@ $usuario = $_SESSION['usuario'];
                                                 <input type="text" class="form-control" id="asociacion"  size='2'  value="<?php echo $asociacion; ?>" placeholder="Username" >
                                             </div><!-- /input-group -->
                                         </div><!-- /.col-lg-6 -->
-
-
-                                        
-                                       
-
-
-                                        
-
-                                    </div><!-- /.row -->
-                                    <div class="box-body">
+                                        <div class="box-body">
                                             <div class="form-group">
                                             <label>Correo</label>
                                             <input type="text" class="form-control" id="correo"   value="<?php echo $correo; ?>" placeholder="Enter ..."/>
                                         
-                                    </div><!-- /.col-lg-6 -->
+                                        </div><!-- /.col-lg-6 -->
+                                    </div><!-- /.row -->
+                                    
                                     <div class="box-body">
                                             <div class="form-group">
                                             <label>Direccion</label>
                                             <input type="text" class="form-control"  id="direccion"   value="<?php echo $direccion; ?>" placeholder="Enter ..."/>
                                             
-                                            <div class="form-group">
+                                            <div class="box-body">
                                                 <label for="provincia">
                                                     Provincia:
                                                 </label>&nbsp;
@@ -256,7 +226,7 @@ $usuario = $_SESSION['usuario'];
                                                             ';} ?>
                                                 </select>
                                             </div>
-                                            <div class="form-group">
+                                            <div class="box-body">
                                                 <label for="canton">
                                                  Canton:
                                                 </label>
@@ -265,7 +235,7 @@ $usuario = $_SESSION['usuario'];
                                                     
                                                 </select>
                                             </div>
-                                            <div class="form-group">
+                                            <div class="box-body">
                                                 <label for="parroquia">
                                                 Parroquia:
                                                 </label> 

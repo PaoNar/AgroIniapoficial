@@ -1,7 +1,7 @@
 <?php
 
-include_once '../../Conexion/conexion2.php';
-$conexion=conexion();
+include '../Conexion/conexion2.php';
+
 session_start();
 error_reporting(0); // No mostrar los errores 
 $validar = $_SESSION['usuario'];
@@ -125,11 +125,6 @@ $usuario = $_SESSION['usuario'];
                     <li>
                         <a href="../leaflet-CRUD-master/">
                             <i class="fa fa-th"></i> <span>Mapa</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="./pages/actividades.php">
-                            <i class="fa fa-th"></i> <span>Actividades</span>
                         </a>
                     </li>
                    

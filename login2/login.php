@@ -29,36 +29,47 @@
 
 	
 </head>
-<body>
+<style>
+  img {
+    
+    opacity: 0.8;
+    height: 100%;
+    width: 70%;
+    position:absolute;
+		left: 46%;
+    
+  }
+</style>
 
+<body>
+<img src="../img/iniap.png" >
 <div class="container-fluid">
 	
 	<div class="row">
 		
-		<div class="col-md-12">
+		<div class="col-md-6">
 			
 			<div class="row">
 				
 				<div class="col-md-2">
 				</div>
-				<div class="col-md-4">
+				<div class="col-md-6">
 				<!-- Default form login -->
-					<form class="text-center border border-light p-5"  action="validacion.php" method="post">
+				<br><br>
+					<form class="text-center border border-light p-2"  action="validacion.php" method="post">
 
-							<p class="h4 mb-4 font-Arial">INGRESAR</p>
+							<p class="h4 mb-4 ">INGRESAR</p>
 
 							<!-- Email -->
-							<input type="text" id="defaultLoginFormEmail" class="form-control mb-4" name="ci" placeholder="cedula" autocomplete="off">
+							<input type="text"  class="form-control mb-4" name="ci" placeholder="cedula" autocomplete="off">
 
 							<!-- Password -->
-							<input type="password" id="defaultLoginFormPassword" class="form-control mb-4" name="clave" placeholder="Password">
-
-							
+							<input type="password"  class="form-control mb-4" name="clave" placeholder="Password">
 
 							<!-- Sign in button -->
-							<button class="btn btn-info btn-block my-4"  type="submit" > <a href="../app/menu.php"></a> Entrar</button>
+							<button class="btn btn-info btn-block my-4"  type="submit" > <a href="../app/menu.php"></a> Ingresar</button>
 
-							<a href="../mail/vista.php">Olvido su contraseña</a>
+							<a href="../mail/vista.php">Olvido su contraseña?</a>
 
 							<!-- Register -->
 							<p>No esta registrado?

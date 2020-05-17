@@ -15,7 +15,20 @@
 
 </head>
 
-<body>
+<style>
+  img {
+    
+    opacity: 0.8;
+    height: 100%;
+    width: 100%;
+    position:absolute;
+    
+  }
+
+</style>
+
+<body  >
+<img src="../img/logo2.jpg" >
  
 <div class="container-fluid">
 	<div class="row">
@@ -26,7 +39,11 @@
 				<div class="col-md-4">
 					<form role="form">
             
-
+              <div class="row ">
+                <div class="form-group">
+                  <h2 for="cedula">Registro de Datos</h2>
+                </div>
+              </div>
               <div class="row ">
                 <div class="form-group">
                   <label for="cedula">Cedula de Identidad:</label>

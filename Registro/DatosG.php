@@ -33,8 +33,20 @@ $conexion=conexion();
 	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap">
 	 <?php include '../navegacion/navegacion.php'; ?>
 </head>
-<body><br>
 
+<style>
+  img {
+    
+    opacity: 0.8;
+    height: 100%;
+    width: 100%;
+    position:absolute;
+    
+  }
+</style>
+
+<body>
+<img src="../img/logo2.jpg" >
 <div class="container-fluid">
 	
 	<div class="row">
@@ -52,7 +64,7 @@ $conexion=conexion();
 					<form  role="form">
 
 					<fieldset>
-            <legend class="text-center header">Registro</legend>
+            <legend class="text-center header">Registro de Datos</legend>
 
 						<div class="form-group"> 
 							 <span ><i class="fa fa-user bigicon"></i></span>
@@ -88,8 +100,6 @@ $conexion=conexion();
 										</form>
 										<br>
                   
-				</div>
-				<div class="col-md-4">
 				</div>
 				
 			</div>

@@ -21,10 +21,22 @@ die();
     <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
      <?php include '../navegacion/navegacion.php'; ?>
 </head>
+<style>
+  img {
+    
+    opacity: 0.8;
+    height: 100%;
+    width: 100%;
+    position:absolute;
+    
+  }
+</style>
+
 <body>
+<img src="../img/logo2.jpg" >
 <div class="container-fluid">
 	<div class="row">
-<div class="col-md-12">
+      <div class="col-md-12">
 			<div class="row">
 				<div class="col-md-2">
 				</div>
@@ -53,17 +65,14 @@ die();
 
                       echo '
                                           <br><br>
-                                          <div ">
-                                             <h4>
-                                                Excelente, has completado con éxito!
-                                             </h4>
-                                             <p><h5>
-                                                   
-                                                   
-                                                   <strong>Por favor vuelva a Ingresar !</strong><h5>
-                                                   
-                                             </p>
                                           
+                                          <div class="col-md-12">
+                                             <h4  >
+                                                Excelente, has completado el registro con éxito!
+                                             </h4>
+                                             <p>
+                                                <strong>Por favor vuelva a Ingresar !</strong>     
+                                             </p>
                                           </div>
                                           ';
                                           session_destroy();
@@ -73,10 +82,9 @@ die();
         
              ?>
                 </div>
-                <div class="col-md-4">
-                </div>
             </div>
-</div>
-</body>
+      </div>
+   </body>
 </html>
-<?php };?>
+<?php
+ };?>

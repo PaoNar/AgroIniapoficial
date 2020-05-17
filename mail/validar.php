@@ -3,12 +3,11 @@ session_start();
 include '../Conexion/conexion2.php';
 $conexion=conexion();
 
-// $usuario = $_SESSION['usuario'];
+$usuario = $_SESSION['usuario'];
 
-//        $sql="SELECT correo FROM Agr_usuario   WHERE ci = '$usuario'";
-//        $last=pg_query($conexion,$sql);
-//        $fila=pg_fetch_array($last);
-
+       $sql="SELECT correo FROM Agr_usuario   WHERE ci = '$usuario'";
+       $last=pg_query($conexion,$sql);
+       $fila=pg_fetch_array($last);
 
 if(trim($_POST["correo"]) != "")
 {

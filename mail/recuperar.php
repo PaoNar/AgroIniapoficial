@@ -29,8 +29,20 @@ $usuario = $_SESSION['usuario'];
 
 	
 </head>
-<body>
+<style>
+  img {
+    
+    opacity: 0.8;
+    height: 100%;
+    width: 100%;
+		position:absolute;
+    
+    
+  }
+</style>
 
+<body>
+<img src="../img/logo2.jpg" >
 <div class="container-fluid">
 	
 	<div class="row">

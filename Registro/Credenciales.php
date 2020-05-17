@@ -33,10 +33,20 @@ die();
         background-color: #2E64FE;
         border-radius:15%;
     }
+    img {
+    
+    opacity: 0.8;
+    height: 100%;
+    width: 100%;
+    position:absolute;
+    
+  }
 </style>
  <?php include '../navegacion/navegacion.php'; ?>
 </head>
+
 <body>
+<img src="../img/logo2.jpg" >
 <div class="container-fluid">
 	
 	<div class="row">
@@ -50,7 +60,7 @@ die();
 				<div class="col-md-4">
                     <form action="../Procesos/RegCredenciales.php" method="post" role="form">
                     	
-                            <legend class="text-center header"> Registro </legend>
+                            <legend class="text-center header"> Registro de Datos </legend>
                     
                            <div class="form-group">
                             <label for="asociacion">

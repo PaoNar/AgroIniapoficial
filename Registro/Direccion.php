@@ -28,8 +28,19 @@ $conexion=conexion();?>
 
 </head>
 
-<body><br>
- 
+<style>
+  img {
+    
+    opacity: 0.8;
+    height: 100%;
+    width: 100%;
+    position:absolute;
+    
+  }
+</style>
+
+<body>
+<img src="../img/logo2.jpg" >
 <div class="container-fluid">
 	<div class="row">
 		<div class="col-md-12">
@@ -40,7 +51,8 @@ $conexion=conexion();?>
 
                 <div class="modal-footer display-footer" id="respuesta"></div>
 					<form role="form" >
-                        <div class="form-group">
+              <legend class="text-center header">Registro de Datos</legend>
+              <div class="form-group">
 							<label for="provincia">
 								Provincia:
                             </label>&nbsp;
