@@ -73,7 +73,7 @@ function _attachTopNavMenu () {
           "<a class='navbar-brand' href=''></a>" +
           "<a class='navbar-brand' href=''></a>" +
           "<a class='navbar-brand' href=''></a>" +
-          "<a class='navbar-brand' href='../app/index.php'>Salir de Mapa</a>" +
+          "<a class='navbar-brand' href='../app/pages/perfil.php'>Salir de Mapa</a>" +
         "</ul>" +
       "</div>" +
     "</nav>" +

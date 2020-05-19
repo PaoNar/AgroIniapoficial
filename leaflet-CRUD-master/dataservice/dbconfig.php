@@ -4,5 +4,5 @@ $dbconfig = array (
 	"_pgsql_db_port_" => "5432",
 	"_pgsql_db_user_" => "postgres",
 	"_pgsql_db_pass_" => "12345",
-	"_pgsql_db_name_" => "AgroIniap" );
+	"_pgsql_db_name_" => "AgroIniap2" );
 ?>

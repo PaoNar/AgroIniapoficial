@@ -57,9 +57,9 @@ $conexion=conexion();
 
                   // Content
                   $mail->isHTML(true);                                  // Set email format to HTML
-                  $mail->Subject = 'Asunto muy importante';
-                  $mail->Body = '<a href="http://localhost/OficialIniap/mail/recuperar.php">Enlace para su nueva contraseña</a>';
-                  $mail->AltBody = 'Asunto muy importante';
+                  $mail->Subject = 'Recuperación de Contraseña';
+                  $mail->Body = '<p>Bienvenido Estimad@, porfavor da click en este enlace  para <a href="http://localhost/OficialIniap/mail/recuperar.php"> Ingresar una nueva contraseña</a></p>';
+                  $mail->AltBody = 'Bienvenido a la Plataforma AgroIniap';
 
 
 
@@ -87,10 +87,10 @@ $conexion=conexion();
                                           </style>
 
                                           <body>
-                                          <img src="../img/logo2.jpg" >
+                                          <img src="../img/logo2.png" >
                                           <div class="col-md-12">
                                               <h4  >
-                                                  Excelente, has completado el registro con éxito!
+                                                  Excelente, verifique su correo!
                                                   <p>Haz <a href="../login2/login.php">clic aqui para volver al formulario</a></p>
                                               </h4>
                                              
@@ -101,6 +101,7 @@ $conexion=conexion();
               } catch (Exception $e) {
                   
                       echo 'Mailer Error: ' . $mail->ErrorInfo;
+                       
                       echo "<p>Haz <a href='../login2/login.php'>clic para volver al formulario</a></p>";
               }
             
@@ -108,7 +109,7 @@ $conexion=conexion();
             echo 'mail incorrecto';
             }
           }else{
-            echo 'Usuario no existente en la base de datos';
+            echo 'Usuario no registrado';
           }
           pg_free_result($result);
           }else{

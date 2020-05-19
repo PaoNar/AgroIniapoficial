@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -28,7 +29,7 @@
 </style>
 
 <body  >
-<img src="../img/logo2.jpg" >
+<img src="../img/logo2.png" >
  
 <div class="container-fluid">
 	<div class="row">
@@ -46,7 +47,7 @@
               </div>
               <div class="row ">
                 <div class="form-group">
-                  <label for="cedula">Cedula de Identidad:</label>
+                  <label for="cedula">Cédula de Identidad:</label>
                   <input type="text" class="form-control" id="cedula">
                 </div>
               </div>
@@ -92,7 +93,4 @@ $('#enviar').click(function () {
 </script>
 </div>
 </body>
-
-
-
 </html>

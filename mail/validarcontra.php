@@ -1,29 +1,53 @@
+
 <?php
+
 session_start();
-include '../Conexion/conexion2.php';
+error_reporting(0); // No mostrar los errores 
+$validar = $_SESSION['correo'];
+
+if($validar == null || $validar = ''){
+echo 'El formulario ha caducado';
+die();
+}else{
+
+include_once '../Conexion/conexion2.php';
 $conexion=conexion();
 
-$correo = $_SESSION['correo'];
+ if($_POST['clave']== null || $_POST['clave']== ''){
 
-if(trim($_POST["clave"]) != "")
-{
- $password = strtolower(htmlentities($_POST["clave"], ENT_QUOTES));
- $clave=md5($password);
- 
-  if( !$clave ){
-    echo 'error';
-  
-  }else{
-    
-   $sql = "UPDATE agr_usuario SET clave = '$clave'  WHERE correo ='$correo'";
-   $result=pg_query($conexion,$sql);
-   
-   echo 'Contraseña Actualizada  <p>';
-   session_destroy();
-   header("Location: ../login2/login.php");
-  }
+    echo '
+    <strong>Por favor ingrese la nueva clave</strong>';
+
  }else{
-  echo 'Error Ingrese nueva clave';
- }
-pg_close();
+
+    if($_POST['clave2']== null || $_POST['clave2']== ''){
+
+        echo ' Profavor confirme su nueva clave</strong>';
+
+    }else{
+
+
+if($_POST['clave'] == $_POST['clave2']){
+
+    $correo = $_SESSION['correo'];
+    
+    $clave = md5($_POST['clave']);
+
+    $sql=" UPDATE Agr_usuario SET clave = '$clave' WHERE correo= '$correo'";
+    $result=pg_query($conexion,$sql);
+
+    session_destroy();
+    header("Location: ../login2/login.php");
+    
+
+
+
+}else{
+    echo ' </strong> Las Claves no coinciden</strong>';
+}
+}
+}
+};
 ?>
+
+

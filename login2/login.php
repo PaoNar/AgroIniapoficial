@@ -34,15 +34,15 @@
     
     opacity: 0.8;
     height: 100%;
-    width: 70%;
+    width: 60%;
     position:absolute;
-		left: 46%;
+		left: 36%;
     
   }
 </style>
 
 <body>
-<img src="../img/iniap.png" >
+<img src="../img/logo3.jpg" >
 <div class="container-fluid">
 	
 	<div class="row">
@@ -54,22 +54,22 @@
 				<div class="col-md-2">
 				</div>
 				<div class="col-md-6">
-				<!-- Default form login -->
+			
 				<br><br>
 					<form class="text-center border border-light p-2"  action="validacion.php" method="post">
 
-							<p class="h4 mb-4 ">INGRESAR</p>
+							<h2 class="h4 mb-4 ">INGRESAR</h2>
 
-							<!-- Email -->
-							<input type="text"  class="form-control mb-4" name="ci" placeholder="cedula" autocomplete="off">
+							<!-- cedula -->
+							<input type="text"  class="form-control mb-4" name="ci" placeholder="Cédula" autocomplete="off">
 
-							<!-- Password -->
-							<input type="password"  class="form-control mb-4" name="clave" placeholder="Password">
+							<!-- clave -->
+							<input type="password"  class="form-control mb-4" name="clave" placeholder="Clave">
 
 							<!-- Sign in button -->
 							<button class="btn btn-info btn-block my-4"  type="submit" > <a href="../app/menu.php"></a> Ingresar</button>
 
-							<a href="../mail/vista.php">Olvido su contraseña?</a>
+							<a href="../mail/vista.php">Olvidó su contraseña?</a>
 
 							<!-- Register -->
 							<p>No esta registrado?
@@ -78,12 +78,9 @@
 
 						
 					</form>
-					<!-- Default form login -->
-													
-
-	</div>
-				<div class="col-md-4">
-				</div>
+					
+					</div>
+				
 				
 			</div>
 		</div>

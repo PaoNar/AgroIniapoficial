@@ -1,14 +1,14 @@
 <?php
 session_start();
-error_reporting(0); 
+// error_reporting(0); 
+$validar= $_SESSION['correo'];
 
-include '../Conexion/conexion2.php';
-$conexion=conexion();
-
-$usuario = $_SESSION['usuario'];
-
-      
+if($validar == null || $validar= ''){
+echo 'El formulario ha caducado';
+die();
+}else {
 ?>
+
 
 <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
 <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
@@ -27,6 +27,10 @@ $usuario = $_SESSION['usuario'];
     <!--Fontawesome CDN-->
 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
 
+	  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+
 	
 </head>
 <style>
@@ -42,7 +46,7 @@ $usuario = $_SESSION['usuario'];
 </style>
 
 <body>
-<img src="../img/logo2.jpg" >
+<img src="../img/logo2.png" >
 <div class="container-fluid">
 	
 	<div class="row">
@@ -55,28 +59,29 @@ $usuario = $_SESSION['usuario'];
 				</div>
 				<div class="col-md-4">
 				<!-- Default form login -->
-					<form class="text-center border border-light p-5"  action="validarcontra.php" method="post">
+				
+					<form class="text-center border border-light p-5" action="validarcontra.php"  method="POST" >
 
-							<strong><h2 class="h4 mb-4">Recuperacion de Contraseña</h2></strong>
+							<strong><h2 class="h4 mb-4">Recuperación de Contraseña</h2></strong>
 						
-							<input type="password"  class="form-control mb-4" name="clave" placeholder=" Nueva Contraseña">
+							<input type="password"  class="form-control mb-4"   name="clave2" minlength="5" required placeholder=" Nueva Contraseña">
 
+							<input type="password"  class="form-control mb-4"    name="clave" minlength="5" required placeholder=" Repetir Contraseña">
 
               <!-- Recuperar button -->
-							<button class="btn btn-info btn-block my-4" type="submit">Enviar</button>
+							<button type="submit" class="btn btn-info btn-block my-4" >Enviar</button>
 			
 
 					</form>
-					<!-- Default form login -->
-													
-
-	</div>
-				<div class="col-md-4">
+					
 				</div>
 				
 			</div>
 		</div>
 	</div>
 </div>
+
 </body>
 </html>
+
+<?php };?>

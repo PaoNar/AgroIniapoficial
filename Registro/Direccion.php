@@ -40,7 +40,7 @@ $conexion=conexion();?>
 </style>
 
 <body>
-<img src="../img/logo2.jpg" >
+<img src="../img/logo2.png" >
 <div class="container-fluid">
 	<div class="row">
 		<div class="col-md-12">

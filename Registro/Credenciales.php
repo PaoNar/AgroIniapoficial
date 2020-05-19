@@ -46,7 +46,7 @@ die();
 </head>
 
 <body>
-<img src="../img/logo2.jpg" >
+<img src="../img/logo2.png" >
 <div class="container-fluid">
 	
 	<div class="row">

@@ -33,22 +33,22 @@ $usuario = $_SESSION['usuario'];
 <style>
 	img{
 		width:50%;
-		margin: 10%;
-		border
+		border: transparent;
+		margin:1%;
 	
 	}
   .iniap {
     
     opacity: 0.8;
     height: 100%;
-    width: 90%;
+    width: 100%;
     position:absolute;
     
   }
 </style>
 
 <body>
-<img class="iniap" src="../img/logo2.jpg" >
+<img class="iniap" src="../img/logo2.png" >
 <div class="container-fluid">
 	
 	<div class="row">

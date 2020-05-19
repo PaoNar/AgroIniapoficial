@@ -49,7 +49,7 @@ die();
 
               $asociacion = $_POST['asociacion'];
                $clave = md5($_POST['clave']);
-               // $usuario = $_SESSION['usuario'];
+               
 
                if($clave == null || $clave == '0'){
                   echo '<div class="alert alert-danger" role="alert">
@@ -64,25 +64,21 @@ die();
                       $result=pg_query($conexion,$sql);
 
                       echo '
-                                          <br><br>
+                           <br><br>
                                           
-                                          <div class="col-md-12">
-                                             <h4  >
-                                                Excelente, has completado el registro con éxito!
-                                             </h4>
-                                             <p>
-                                                <strong>Por favor vuelva a Ingresar !</strong>     
-                                             </p>
-                                          </div>
-                                          ';
-                                          session_destroy();
-                                          
-                            }
-
-        
-             ?>
-                </div>
-            </div>
+                           <div class="col-md-12">
+                              <h4  >
+                              Excelente, se ha completado el registro con éxito!
+                              </h4>
+                              <p>
+                                 <strong>Por favor vuelva a Ingresar !</strong>     
+                              </p>
+                           </div>';
+                           session_destroy();                 
+                  }
+                  ?>
+               </div>
+         </div>
       </div>
    </body>
 </html>

@@ -38,23 +38,23 @@ function _displayMapUpdatePolygon (divtarget) {
 		map.addLayer(polygonObjects);
 	});
 
-	openStreetMaps = new L.TileLayer("http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
+	openStreetMaps =  new L.TileLayer("http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
 		minZoom: 3, 
 		maxZoom: 20, 
-		attribution: 'Map Data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors.'
-	});
-	
-	map = L.map("map", {
-		zoom: 5,
-		center: [-2.5918889841, 118.2788085937],
+		attribution: 'AgroIniap'
+	  });
+	  
+	  map = L.map("map", {
+		zoom: 6,
+		center: [-0.1926044, -78.4900989],
 		layers: [openStreetMaps],
 		minZoom: 3,
 		maxZoom: 20,
 		zoomControl: false,
 		attributionControl: true
-	});
+	  });
 	
-	map.setMaxBounds([[-12.6406520507, 94.1211943626], [7.4970404951, 142.1802794933]]);
+	// map.setMaxBounds([[-12.6406520507, 94.1211943626], [7.4970404951, 142.1802794933]]);
 
 	var zoomControl = L.control.zoom({
 		position: "topleft"

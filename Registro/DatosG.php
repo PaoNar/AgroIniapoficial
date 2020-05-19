@@ -4,7 +4,7 @@ error_reporting(0); // No mostrar los errores
 $validar = $_SESSION['usuario'];
 
 if($validar == null || $validar = ''){
-echo 'Upss!! El registro ha terminado';
+echo ' El registro ha terminado';
 die();
 }else {
 
@@ -46,7 +46,7 @@ $conexion=conexion();
 </style>
 
 <body>
-<img src="../img/logo2.jpg" >
+<img src="../img/logo2.png" >
 <div class="container-fluid">
 	
 	<div class="row">
